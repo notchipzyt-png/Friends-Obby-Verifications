@@ -8,5 +8,11 @@
     "percentToQualify": "100",
     "password": "Free To Copy",
     "records": [
+                                 {
+            "user": "Isaac",
+            "link": "https://medal.tv/games/roblox/clips/nDQMXwstNIQjc97fT/spok?invite=cr-MSxNN04sNTQ2ODkxMzczLA",
+            "percent": 100,
+            "hz": 60
+        }
     ]
 }
