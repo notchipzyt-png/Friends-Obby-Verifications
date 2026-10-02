@@ -1,5 +1,5 @@
 import { store } from "../main.js";
-import { embed } from "../util.js";
+import { embed, isYouTubeUrl } from "../util.js";
 import { score } from "../score.js";
 import { fetchEditors, fetchList } from "../content.js";
 
@@ -40,7 +40,8 @@ export default {
                 <div class="level" v-if="level">
                     <h1>{{ level.name }}</h1>
                     <LevelAuthors :author="level.author" :creators="level.creators" :verifier="level.verifier"></LevelAuthors>
-                    <iframe class="video" id="videoframe" :src="video" frameborder="0"></iframe>
+                    <iframe v-if="video && isYouTubeUrl(level.verification)" class="video" id="videoframe" :src="video" frameborder="0"></iframe>
+                    <a v-else-if="level.verification" class="type-label-lg" :href="level.verification" target="_blank" rel="noopener noreferrer">Open verification</a>
                     <ul class="stats">
                         <li>
                             <div class="type-title-sm">Points when completed</div>
@@ -141,15 +142,15 @@ export default {
             return this.list[this.selected][0];
         },
         video() {
-            if (!this.level.showcase) {
-                return embed(this.level.verification);
+            if (!this.level || !this.level.verification) {
+                return '';
             }
 
-            return embed(
-                this.toggledShowcase
-                    ? this.level.showcase
-                    : this.level.verification
-            );
+            if (!isYouTubeUrl(this.level.verification)) {
+                return '';
+            }
+
+            return embed(this.level.verification);
         },
     },
     async mounted() {
@@ -179,6 +180,7 @@ export default {
     },
     methods: {
         embed,
+        isYouTubeUrl,
         score,
     },
 };
