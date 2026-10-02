@@ -5,6 +5,11 @@ export function getYoutubeIdFromUrl(url) {
     )?.[1] ?? '';
 }
 
+export function isYouTubeUrl(url) {
+    if (!url) return false;
+    return /(?:youtube\.com|youtu\.be)/.test(url);
+}
+
 export function embed(video) {
     return `https://www.youtube.com/embed/${getYoutubeIdFromUrl(video)}`;
 }
