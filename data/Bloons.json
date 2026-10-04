@@ -1,0 +1,18 @@
+{
+    "id": "Obby Creator Obby ID: 373158283#21",
+    "name": "bloons td 6",
+    "author": "NotChipz",
+    "creators": ["NotChipz"],
+    "verifier": "Pringle",
+    "verification": "https://youtu.be/3SQC8wOzjAI",
+    "percentToQualify": "100",
+    "password": "Free To Copy",
+    "records": [
+                                 {
+            "user": "NotChipz",
+            "link": "https://youtu.be/5uoh0-zjw5M",
+            "percent": 100,
+            "hz": 60
+        }
+    ]
+}
